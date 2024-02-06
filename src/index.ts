@@ -2,7 +2,7 @@ import { Plugin } from 'esbuild'
 import fs from 'fs'
 import { parse } from 'querystring'
 import { loadEntry } from './entry'
-import { resolvePath, validateDenpendency } from './util'
+import { resolvePath, validateDependency } from './util'
 import { resolveScript } from './script'
 import { resolveTemplate } from './template'
 import { resolveStyle } from './style'
@@ -16,7 +16,7 @@ export interface Options {
     >
 
     // script
-    scriptOptions?: Pick<SFCScriptCompileOptions, 'babelParserPlugins' | 'refSugar'>
+    scriptOptions?: Pick<SFCScriptCompileOptions, 'babelParserPlugins'>
 
     // style
     styleOptions?: Pick<
@@ -25,7 +25,7 @@ export interface Options {
     >
 }
 
-validateDenpendency()
+validateDependency()
 
 function plugin({ templateOptions, scriptOptions, styleOptions }: Options = {}): Plugin {
     return {
@@ -41,7 +41,7 @@ function plugin({ templateOptions, scriptOptions, styleOptions }: Options = {}):
                 async args => {
                     const filename = args.path
                     const source = await fs.promises.readFile(filename, 'utf8')
-                    const { code, errors } = loadEntry(source, filename, !!sourcemap)
+                    const { code, errors } = loadEntry(source, filename, !!sourcemap, templateOptions && templateOptions.compilerOptions)
                     return {
                         contents: code,
                         errors

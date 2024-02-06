@@ -26,6 +26,7 @@ export function convertErrors(errors: ParseErrors, filename: string) {
             }
         }
         return {
+			id: "",
             pluginName: 'vue',
             text: e.message,
             location: location,
@@ -36,7 +37,7 @@ export function convertErrors(errors: ParseErrors, filename: string) {
     return errors.map(e => convert(e))
 }
 
-export function validateDenpendency() {
+export function validateDependency() {
     try {
         require.resolve('@vue/compiler-sfc')
     } catch {

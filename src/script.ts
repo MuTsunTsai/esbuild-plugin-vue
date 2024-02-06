@@ -32,8 +32,6 @@ export function resolveScript(
             sourceMap: sourcemap,
             inlineTemplate: true,
             babelParserPlugins: scriptOptions.babelParserPlugins,
-            refTransform: true,
-            refSugar: scriptOptions.refSugar,
             templateOptions: descriptor.template ? getTemplateOptions(descriptor, templateOptions, isProd) : {}
         })
         code = res.content

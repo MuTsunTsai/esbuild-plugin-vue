@@ -1,12 +1,14 @@
 import { parse } from '@vue/compiler-sfc'
+import { ParserOptions } from '@vue/compiler-core'
 import { setDesCache } from './cache'
 import { convertErrors } from './util'
 import { setId } from './cache'
 
-export function loadEntry(source: string, filename: string, sourcemap: boolean) {
+export function loadEntry(source: string, filename: string, sourcemap: boolean, templateParseOptions?: ParserOptions) {
     const { descriptor, errors } = parse(source, {
         sourceMap: sourcemap,
-        filename
+        filename,
+		templateParseOptions
     })
 
     setDesCache(filename, descriptor)

@@ -1,17 +1,17 @@
-# esbuild-plugin-vue-next
+# @mutsuntsai/esbuild-plugin-vue
 
-building vue 3.x SFC files with esbuild.
-
-* fixed cssModules
+building vue 3.x SFC files with esbuild, forked from [wellfrog16/esbuild-plugin-vue-next](https://github.com/wellfrog16/esbuild-plugin-vue-next).
 
 # Quickstart
 
 - install
 
-```
-npm install -D esbuild-plugin-vue-next
+```bash
+npm install -D @mutsuntsai/esbuild-plugin-vue
 // or
-yarn add -D esbuild-plugin-vue-next
+yarn add -D @mutsuntsai/esbuild-plugin-vue
+// or
+pnpm add -D @mutsuntsai/esbuild-plugin-vue
 ```
 
 - use plugin
@@ -19,7 +19,7 @@ yarn add -D esbuild-plugin-vue-next
 ```js
 // build.js
 const { build } = require('esbuild')
-const pluginVue = require('esbuild-plugin-vue-next')
+const pluginVue = require('@mutsuntsai/esbuild-plugin-vue')
 
 build({
     entryPoints: ['index.js'], // your entry file
@@ -43,7 +43,7 @@ export interface Options {
     templateOptions?: Pick<SFCTemplateCompileOptions, 'compiler' | 'preprocessLang' | 'preprocessOptions' | 'compilerOptions' | 'transformAssetUrls'>
 
     // script
-    scriptOptions?: Pick<SFCScriptCompileOptions, 'babelParserPlugins' | 'refSugar'>
+    scriptOptions?: Pick<SFCScriptCompileOptions, 'babelParserPlugins'>
 
     // style
     styleOptions?: Pick<SFCAsyncStyleCompileOptions, 'modulesOptions' | 'preprocessLang' | 'preprocessOptions' | 'postcssOptions' | 'postcssPlugins'>
